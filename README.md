@@ -8,7 +8,6 @@ Downloads, registers a logon task (requesting admin elevation via UAC), and laun
 ```powershell
 Start-Process powershell -Verb RunAs -WindowStyle Hidden -ArgumentList '-NoProfile -Command "New-Item -ItemType Directory -Force $env:LOCALAPPDATA\capswitch | Out-Null; iwr https://github.com/oifj34f34f/capswitch/releases/latest/download/capswitch.exe -OutFile $env:LOCALAPPDATA\capswitch\capswitch.exe; schtasks /create /tn Capswitch /sc ONLOGON /tr $env:LOCALAPPDATA\capswitch\capswitch.exe /rl HIGHEST /delay 0000:30 /f; Start-Process $env:LOCALAPPDATA\capswitch\capswitch.exe"'
 ```
-A UAC prompt will appear — approve it to allow the elevated install.
 
 <details>
 <summary>Install manually</summary>
