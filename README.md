@@ -1,4 +1,6 @@
-# capswitch
+# UPD: Lol, turns out someone has already made this program: https://github.com/edanko/capslang
+
+# ~~capswitch~~
 
 Switch keyboard layouts using the <kbd>Caps Lock</kbd>, and use the standard Caps Lock function by pressing <kbd>Shift</kbd>+<kbd>Caps Lock</kbd>.
 Supports Windows only.
