@@ -31,7 +31,7 @@ cl /O1 /Os /GS- /GL capswitch.c /link /SUBSYSTEM:WINDOWS /NODEFAULTLIB /ENTRY:Ra
 
 ## Uninstall
 ```powershell
-Stop-Process -Name capswitch -Force -ErrorAction SilentlyContinue; schtasks /Delete /TN "Capswitch" /F; Remove-Item "$env:LOCALAPPDATA\capswitch" -Recurse -Force -ErrorAction SilentlyContinue
+Stop-Process -Name capswitch -Force -ErrorAction SilentlyContinue; schtasks /Delete /TN "Capswitch" /F *>$null; Remove-Item "$env:LOCALAPPDATA\capswitch" -Recurse -Force -ErrorAction SilentlyContinue
 ```
 
 ---
