@@ -4,15 +4,16 @@ Switch keyboard layouts using the <kbd>Caps Lock</kbd>, and use the standard Cap
 Supports Windows only.
 
 ## Quick Start
-Downloads, registers a logon task, and launches automatically:
+Downloads, registers a logon task (requesting admin elevation via UAC), and launches automatically:
 ```powershell
-New-Item -ItemType Directory -Force "$env:LOCALAPPDATA\capswitch" | Out-Null; iwr https://github.com/oifj34f34f/capswitch/releases/latest/download/capswitch.exe -OutFile "$env:LOCALAPPDATA\capswitch\capswitch.exe"; schtasks /create /tn Capswitch /sc ONLOGON /tr "$env:LOCALAPPDATA\capswitch\capswitch.exe" /rl HIGHEST /delay 0000:30 /f; Start-Process "$env:LOCALAPPDATA\capswitch\capswitch.exe"
+Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -Command "New-Item -ItemType Directory -Force $env:LOCALAPPDATA\capswitch | Out-Null; iwr https://github.com/oifj34f34f/capswitch/releases/latest/download/capswitch.exe -OutFile $env:LOCALAPPDATA\capswitch\capswitch.exe; schtasks /create /tn Capswitch /sc ONLOGON /tr $env:LOCALAPPDATA\capswitch\capswitch.exe /rl HIGHEST /delay 0000:30 /f; Start-Process $env:LOCALAPPDATA\capswitch\capswitch.exe"'
 ```
+A UAC prompt will appear — approve it to allow the elevated install.
 
 <details>
 <summary>Install manually</summary>
 
-Download the binary from the [releases page](https://github.com/oifj34f34f/capswitch/releases/latest), place it at `%LOCALAPPDATA%\capswitch\capswitch.exe`, then create a logon task:
+Download the binary from the [releases page](https://github.com/oifj34f34f/capswitch/releases/latest), place it at `%LOCALAPPDATA%\capswitch\capswitch.exe`, then open PowerShell **as Administrator** and create a logon task:
 ```powershell
 schtasks /create /tn Capswitch /sc ONLOGON /tr "%LOCALAPPDATA%\capswitch\capswitch.exe" /rl HIGHEST /delay 0000:30 /f
 ```
